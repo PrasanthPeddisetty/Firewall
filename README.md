@@ -22,6 +22,9 @@ inbound,tcp,23,172.27.1.1,True
 inbound,tdp,443,172.27.1.2,False
 ```
 
+## Performance
+The implementation takes O(log(n)) to add or delete entries. Also, it reduces the number of entries to compare with when `accept_packet` function is called. However, it still takes O(n) to query whether it accepts or not. Due to the 90 minutes time constraint, I was not able to reduce the query time to O(log(n)). Please see future optimization section for the detail of possible design.
+
 ## Observation
 #### Test
 Made sure a function works correctly for all the edge cases. First, since IP ranges from 0.0.0.0 to 255.255.255.255 and Port ranges from 0 to 65535, it tests the corner of each range works fine (`fw1.csv` and `test1.csv`). Second, it takes cases when duplicate IP ranges or Port ranges have different rules work fine (`fw2.csv` and `test2.csv`).
@@ -35,4 +38,7 @@ Even though adding or deleting the entry takes always O(log(n)), judging whether
 2. Have array of IP ranges and dictionary of key as IP range and array of Port ranges it accept as its value. However, as the rules becomes complicated, the number of entries in the IP range array would be big and it consumes large memory space. Deleting the existing rule would be impossible.
 
 #### Comment
-Thank you for taking time to review the code.
+Thank you for taking time to review the code. The ranking of my interested teams are as follows. Even though I listed a ranking, all of the teams look really interesting and I would be excited if I can work in any of the team.
+1. platform team
+2. data team
+3. policy team
